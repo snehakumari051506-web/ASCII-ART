@@ -1,4 +1,65 @@
-# ASCII-ART
-# 🎨 Image-to-ASCII-Art Generator  A robust Python utility that converts standard images into high-quality ASCII text art. This project is built using a **library-free** approach for core processing, interacting directly with binary image data to perform pixel-to-character mapping.  ---  ## 📝 Project Overview  This project transforms digital images (specifically 24-bit BMP files) into structural ASCII patterns. By calculating the luminance of each pixel and mapping it to a specific character's visual density, the script generates a text-based representation of the original photo.  ### Key Highlights - **Zero Dependencies:** No `PIL`, `OpenCV`, or `numpy` required for the core conversion. - **Binary Parsing:** Manually extracts metadata and pixel arrays from the BMP file structure. - **Grayscale Optimization:** Uses the weighted luminance formula:    $$Y = 0.299R + 0.587G + 0.114B$$  ---
+# ASCII art of Dan Brown
+def draw(ch, no):
+    char = ""
+    index = 0
+    while index < no:
+        char += ch
+        index += 1
+    return char
 
-## 🛠️ Methodology  The conversion follows a structured pipeline as outlined in the project documentation:  1. **Character Repetition Function**: A density-based character ramp is used to ensure high-fidelity shading (from heavy symbols like `@` to light ones like `.`). 2. **Row-wise Pattern Construction**: The script reads the binary pixel data row-by-row, handling 24-bit color channels and row padding. 3. **Sequential Rendering**: The ASCII characters are rendered sequentially to the terminal, with aspect ratio correction ($0.55$ height scaling) to prevent image stretching.  ---  ## 🚀 Getting Started  ### Prerequisites * Python 3.x installed. * An image saved as a **24-bit BMP (.bmp)** file.  ##
+    def row1():
+    # Top of head/hairline
+   string = ""
+  string += draw(" ", 25)
+  string += draw("@", 30) # Dense character for dark hair
+    string += draw(" ", 25)
+    return string
+
+def row2():
+    # Forehead area
+    string = ""
+    string += draw(" ", 20)
+    string += draw("%", 40) # Medium density for skin texture
+    string += draw(" ", 20)
+    return string
+
+def row3():
+    # Eye line - using # for higher contrast
+    string = ""
+    string += draw(" ", 18)
+    string += draw("#", 8)   # Left Eye
+    string += draw(" ", 18)
+    string += draw("#", 8)   # Right Eye
+    string += draw(" ", 18)
+    return string
+
+def row4():
+    # Nose and cheekbones
+    string = ""
+    string += draw(" ", 38)
+    string += draw("+", 4)   # Highlights for the nose
+    string += draw(" ", 38)
+    return string
+
+def row5():
+    # Mouth and chin
+    string = ""
+    string += draw(" ", 30)
+    string += draw("=", 20)  # Moderate density for the jawline
+    string += draw(" ", 30)
+    return string
+
+    # List of all row functions
+functions = [
+    row1,
+    row2,
+    row3,
+    row4,
+    row5
+]
+
+# Print the final portrait to the terminal
+print("Generating Dan Brown ASCII Portrait...")
+for func in functions:
+    print(func())
+    
